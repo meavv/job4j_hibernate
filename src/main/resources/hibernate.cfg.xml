@@ -20,5 +20,7 @@
 
         <mapping class="model.Brand" />
         <mapping class="model.Model" />
+        <mapping class="model.Author" />
+        <mapping class="model.Book" />
     </session-factory>
 </hibernate-configuration>
