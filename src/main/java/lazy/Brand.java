@@ -1,4 +1,4 @@
-package model;
+package lazy;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ public class Brand {
 
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "brand")
     private List<Model> models = new ArrayList<>();
 
     public static Brand of(String name) {
@@ -48,4 +48,25 @@ public class Brand {
         this.name = name;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Brand brand = (Brand) o;
+        return id == brand.id && Objects.equals(name, brand.name) && Objects.equals(models, brand.models);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, models);
+    }
+
+    @Override
+    public String toString() {
+        return "Brand{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", models=" + models +
+                '}';
+    }
 }

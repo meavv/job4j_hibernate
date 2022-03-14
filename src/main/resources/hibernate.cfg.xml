@@ -17,10 +17,9 @@
         <property name="format_sql">true</property>
         <property name="use_sql_comments">true</property>
 
-
-        <mapping class="model.Brand" />
-        <mapping class="model.Model" />
         <mapping class="model.Author" />
         <mapping class="model.Book" />
+        <mapping class="lazy.Model" />
+        <mapping class="lazy.Brand" />
     </session-factory>
 </hibernate-configuration>
