@@ -6,6 +6,8 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class HbmRun {
@@ -18,17 +20,16 @@ public class HbmRun {
             Session session = sf.openSession();
             session.beginTransaction();
 
-            List<Brand> list = new ArrayList<>();
-            list = session.createQuery("from Brand").list();
+            List<Brand> list = session.createQuery("from Brand").list();
+
             for (Brand brand : list) {
                 for (Model model : brand.getModels()) {
                     System.out.println(model);
                 }
             }
 
-            System.out.println("123");
 
-            /**
+/**
             Brand brand = Brand.of("Brand 1");
             Model m1 = Model.of("Model 1", brand);
             Model m2 = Model.of("Model 2", brand);
@@ -37,7 +38,7 @@ public class HbmRun {
             session.save(m1);
             session.save(m2);
             session.save(brand);
-             **/
+*/
 
             session.getTransaction().commit();
             session.close();
