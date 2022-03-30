@@ -41,12 +41,11 @@ public class HbmRun {
              System.out.println(query.uniqueResult());
              */
 
-            /**
-             * Поиск по name
+
              Query query = session.createQuery("from Candidate where name = :cName");
-             query.setParameter("cName", "Name3");
-             System.out.println(query.uniqueResult());
-             */
+             query.setParameter("cName", "newName");
+             System.out.println(query.list());
+
 
             /**
              * Update через hibernate
