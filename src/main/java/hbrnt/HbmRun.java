@@ -22,7 +22,7 @@ public class HbmRun {
 
             System.out.println(session.get(Candidate.class, 1));
 
-            var rsl = session.createQuery(
+            Candidate rsl = session.createQuery(
                     "select distinct c from Candidate c "
                             + "join fetch c.vacancyBase vb "
                             + "join fetch vb.vacancies v "
