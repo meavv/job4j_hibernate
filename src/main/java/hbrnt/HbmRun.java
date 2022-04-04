@@ -1,5 +1,9 @@
 package hbrnt;
 
+import liquibase.pro.packaged.C;
+import model.Candidate;
+import model.Vacancy;
+import model.VacancyBase;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
@@ -16,6 +20,16 @@ public class HbmRun {
             Session session = sf.openSession();
             session.beginTransaction();
 
+            System.out.println(session.get(Candidate.class, 1));
+
+            var rsl = session.createQuery(
+                    "select distinct c from Candidate c "
+                            + "join fetch c.vacancyBase vb "
+                            + "join fetch vb.vacancies v "
+                            + "where c.id = :sId", Candidate.class
+            ).setParameter("sId", 1).uniqueResult();
+
+            System.out.println("RSL " + rsl);
 
             session.getTransaction().commit();
             session.close();

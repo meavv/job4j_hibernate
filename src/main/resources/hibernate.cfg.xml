@@ -22,5 +22,7 @@
         <mapping class="model.Book" />
         <mapping class="lazy.Model" />
         <mapping class="lazy.Brand" />
+        <mapping class="model.VacancyBase" />
+        <mapping class="model.Vacancy" />
     </session-factory>
 </hibernate-configuration>

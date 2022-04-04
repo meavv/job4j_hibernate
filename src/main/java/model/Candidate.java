@@ -15,6 +15,9 @@ public class Candidate {
     private String experience;
     private double salary;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    private VacancyBase vacancyBase;
+
     public static Candidate of(String name, String experience, double salary) {
         Candidate candidate = new Candidate();
         candidate.name = name;
@@ -23,12 +26,16 @@ public class Candidate {
         return candidate;
     }
 
-    public int getId() {
-        return id;
+    public VacancyBase getVacancyBase() {
+        return vacancyBase;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setVacancyBase(VacancyBase vacancyBase) {
+        this.vacancyBase = vacancyBase;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getName() {
@@ -57,12 +64,10 @@ public class Candidate {
 
     @Override
     public String toString() {
-        return "Candidate{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", experience='" + experience + '\'' +
-                ", salary=" + salary +
-                '}';
+        return "Candidate{" + "id=" + id
+                + ", name='" + name + '\''
+                + ", experience='" + experience
+                + '\'' + ", salary=" + salary + '}';
     }
 
     @Override
